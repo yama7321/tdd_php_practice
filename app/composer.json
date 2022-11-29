@@ -1,8 +1,13 @@
 {
-    "name": "ryotayamaoka/app",
+    "name": "ryotayamaoka/tdd_php_practice",
     "autoload": {
         "psr-4": {
-            "Ryotayamaoka\\App\\": "src/"
+            "ryotayamaoka\\app\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ryotayamaoka\\app\\": "tests"
         }
     },
     "authors": [

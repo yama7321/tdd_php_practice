@@ -20,16 +20,33 @@ class Money implements Expression
 
     public function plus(Expression $addend)
     {
-        // TODO: Implement plus() method.
+        return new Sum($this, $addend);
     }
 
     public function reduce(Bank $bank, string $to): Money
     {
-        // TODO: Implement reduce() method.
+        $rate = $bank->rate($this->currency, $to);
+        return new Money($this->amount / $rate, $to);
+    }
+
+    public function currency()
+    {
+        return $this->currency;
+    }
+
+    public function equals(Money $object): bool
+    {
+        return $this->amount === $object->amount
+            && $this->currency === $object->currency;
     }
 
     public static function dollar(int $amount): Money
     {
         return (new Money($amount, "USD"));
+    }
+
+    public static function franc(int $amount): Money
+    {
+        return (new Money($amount, "CHF"));
     }
 }
